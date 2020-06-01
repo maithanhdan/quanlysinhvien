@@ -7,15 +7,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [MaterialModule],
   bootstrap: [AppComponent],
