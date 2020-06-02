@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QuanLyHocPhiComponent } from './quan-ly-hoc-phi.component';
+import { HocPhiSinhVienComponent } from './hoc-phi-sinh-vien.component';
 
-describe('QuanLyHocPhiComponent', () => {
-  let component: QuanLyHocPhiComponent;
-  let fixture: ComponentFixture<QuanLyHocPhiComponent>;
+describe('HocPhiSinhVienComponent', () => {
+  let component: HocPhiSinhVienComponent;
+  let fixture: ComponentFixture<HocPhiSinhVienComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QuanLyHocPhiComponent ]
+      declarations: [ HocPhiSinhVienComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QuanLyHocPhiComponent);
+    fixture = TestBed.createComponent(HocPhiSinhVienComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
