@@ -32,6 +32,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatBadgeModule } from '@angular/material/badge';
 
+
 const MaterialComponent = [
   MatButtonModule,
   MatButtonToggleModule,

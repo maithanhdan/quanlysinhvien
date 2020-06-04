@@ -1,5 +1,29 @@
 <div class="main-footer">
-    <div class="hidden-xs">
-      diem sinh vien!
-    </div>
+    <div style="margin:0 auto ; width:70%;position: relative;;">
+      <input type="text" [(ngModel)]="search" />
+        <table class="table" style="border: 1px solid #424242;">
+          <thead class="" style="background-color:#343A40; color :white">
+            <tr>
+              <th scope="col">Ma Sinh Vien</th>
+              <th scope="col">Ten Sinh Vien</th>
+              <th scope=col>Que Quan</th>
+              <th scope="col">Dia Chi Thuong Tru</th>
+              <th scope="col">Noi Sinh</th>
+              <th scope="col">Gioi Tinh</th>
+              <th scope="col">So Dien Thoai</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let sv of ThongTinSinhVien|searchTTSV: search">
+              <td>{{ sv.maSV }}</td>
+              <td>{{ sv.tenSinhVien }}</td>
+              <td>{{ sv.queQuan }}</td>
+              <td>{{ sv.diaChiThuongTru }}</td>
+              <td>{{ sv.noiSinh }}</td>
+              <td>{{ sv.gioiTinh }}</td>
+              <td>{{ sv.soDienThoai }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 </div>

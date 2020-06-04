@@ -1,5 +1,31 @@
-<div class="main-footer">
-    <div class="hidden-xs">
-        <p>danh-sach-sinh-vien works!</p>
-    </div>
+<div class="main-footer ">
+  <div style="margin:0 auto ; width:70%;position: relative;">
+    <input type="text" [(ngModel)]="search" />
+    <table class="table" style="border: 1px solid #424242;">
+      <thead class="" style="background-color:#343A40; color :white">
+        <tr>
+          <th scope="col">Ma Sinh Vien</th>
+          <th scope="col">Ten Sinh Vien</th>
+          <th scope="col">Ten Nganh</th>
+          <th scope="col">Ten Lop</th>
+          <th scope="col">Khoa Hoc</th>
+          <th>action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sv of danhSachSinhVien | searchDSSV: search">
+          <td>{{ sv.maSV }}</td>
+          <td>{{ sv.tenSinhVien }}</td>
+          <td>{{ sv.tenNganh }}</td>
+          <td>{{ sv.tenLop }}</td>
+          <td>{{ sv.khoaHoc }}</td>
+          <td>
+            <button class="btn btn-danger delete" (click)="delete(sv.maSV)">
+              xoa
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
