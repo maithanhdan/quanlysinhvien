@@ -15,12 +15,12 @@
       <tbody>
         <tr *ngFor="let sv of danhSachSinhVien | searchDSSV: search">
           <td>{{ sv.maSV }}</td>
-          <td>{{ sv.tenSinhVien }}</td>
+          <td>{{ sv.tenSV }}</td>
           <td>{{ sv.tenNganh }}</td>
           <td>{{ sv.tenLop }}</td>
           <td>{{ sv.khoaHoc }}</td>
           <td>
-            <button class="btn btn-danger delete" (click)="delete(sv.maSV)">
+            <button class="btn btn-danger delete" (click)="delete(sv.id)">
               xoa
             </button>
           </td>

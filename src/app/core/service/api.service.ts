@@ -6,7 +6,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  private ROOT_URL: string = 'http://localhost:3000';
+  private ROOT_URL: string = 'https://5ed9aded4378690016c6b24f.mockapi.io/api';
   constructor(private http: HttpClient) {}
   private handleError(err: any) {
     console.log(err);
