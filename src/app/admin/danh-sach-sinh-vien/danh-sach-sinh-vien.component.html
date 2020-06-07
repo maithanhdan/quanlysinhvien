@@ -1,19 +1,22 @@
 <div class="main-footer ">
   <div style="margin:0 auto ; width:70%;position: relative;">
-    <input type="text" [(ngModel)]="search" />
+    <input class="searchMaSV" type="text" [(ngModel)]="search" placeholder="Tìm kiếm" />
+    <button class="btn btn-success" type="button" data-toggle="modal" data-target="#form">
+      +
+    </button>
     <table class="table" style="border: 1px solid #424242;">
       <thead class="" style="background-color:#343A40; color :white">
         <tr>
-          <th scope="col">Ma Sinh Vien</th>
-          <th scope="col">Ten Sinh Vien</th>
-          <th scope="col">Ten Nganh</th>
-          <th scope="col">Ten Lop</th>
-          <th scope="col">Khoa Hoc</th>
+          <th scope="col">Mã sinh viên</th>
+          <th scope="col">Tên sinh viên</th>
+          <th scope="col">Tên ngành</th>
+          <th scope="col">Tên lớp</th>
+          <th scope="col">Khóa học</th>
           <th>action</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let sv of danhSachSinhVien | searchDSSV: search">
+        <tr *ngFor="let sv of danhSachSinhVien | searchDSSV: search | slice: startPageNumber:endPageNumber">
           <td>{{ sv.maSV }}</td>
           <td>{{ sv.tenSV }}</td>
           <td>{{ sv.tenNganh }}</td>
@@ -23,9 +26,193 @@
             <button class="btn btn-danger delete" (click)="delete(sv.id)">
               xoa
             </button>
+            <button class="btn btn-primary edit" data-toggle="modal" data-target="#form2" (click)="edit()">
+              sửa
+            </button>
           </td>
         </tr>
       </tbody>
     </table>
+
+    <nav aria-label="Page navigation example" id="1">
+      <ul class="pagination">
+        <li class="page-item" *ngFor="
+            let i of getArrayFromNumber(danhSachSinhVien.length);
+            let pageNumber = index
+          ">
+          <a class="page-link pageNumber" (click)="updatePageNumber(pageNumber)">{{ pageNumber + 1 }}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+<!-- popup modal add user -->
+<div class="modal fade bd-example-modal-xl" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thêm Sinh Viên</h5>
+        <button #closebutton type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form #sinhvienForm="ngForm" (ngSubmit)="onSubmit()">
+          <!-- Mã sinh viên -->
+          <div class="form-group">
+            <label for="maSV">Mã sinh viên</label>
+            <input type="text" id="maSV" name="maSV" class="form-control" [(ngModel)]="form.maSV" #maSV="ngModel"
+             required />
+            <div *ngIf="maSV.errors && (maSV.dirty || maSV.touched)">
+              <div *ngIf="maSV.errors.required">
+                <small>Mã sinh viên không được để trống</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tên sinh viên -->
+          <div class="form-group">
+            <label for="tenSV">Tên sinh viên</label>
+            <input type="text" id="tenSV" name="tenSV" class="form-control" [(ngModel)]="form.tenSV" #tenSV="ngModel"
+              required />
+            <div *ngIf="tenSV.errors && (tenSV.dirty || tenSV.touched)">
+              <div *ngIf="tenSV.errors.required">
+                <small>Tên sinh viên không được để trống</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tên ngành -->
+          <div class="form-group">
+            <label for="tenNganh">Tên ngành</label>
+            <input type="tenNganh" id="tenNganh" name="tenNganh" class="form-control" [(ngModel)]="form.tenNganh"
+              #tenNganh="ngModel" required />
+            <div *ngIf="tenNganh.errors && (tenNganh.dirty || tenNganh.touched)">
+              <div *ngIf="tenNganh.errors.required">
+                <small>Tên ngành không được để trống</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tên lớp -->
+          <div class="form-group">
+            <label for="tenLop">Tên lớp</label>
+            <input type="text" id="tenLop" name="tenLop" class="form-control" [(ngModel)]="form.tenLop"
+              #tenLop="ngModel" required />
+            <div *ngIf="tenLop.errors && (tenLop.dirty || tenLop.touched)">
+              <div *ngIf="tenLop.errors.required">
+                <small>Tên lớp không được để trống</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Khóa học -->
+          <div class="form-group">
+            <label for="khoaHoc">Khóa học</label>
+            <input type="text" id="khoaHoc" name="khoaHoc" class="form-control" [(ngModel)]="form.khoaHoc"
+              #khoaHoc="ngModel" required />
+            <div *ngIf="khoaHoc.errors && (khoaHoc.dirty || khoaHoc.touched)">
+              <div *ngIf="khoaHoc.errors.required">
+                <small>Khóa học không được để trống</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Button submit -->
+          <button type="submit" class="btn btn-success" [disabled]="sinhvienForm.invalid">
+            Đăng ký
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- popup modal2 add user -->
+<div class="modal fade bd-example-modal-xl" id="form2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thêm Sinh Viên</h5>
+        <button #closebutton type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form #sinhvienForm="ngForm" (ngSubmit)="onSubmit()">
+          <!-- Mã sinh viên -->
+          <div class="form-group">
+            <label for="maSV">Mã sinh viên</label>
+            <input type="text" id="maSV" name="maSV" class="form-control" [(ngModel)]="form.maSV" #maSV="ngModel"
+              required />
+            <div *ngIf="maSV.errors && (maSV.dirty || maSV.touched)">
+              <div *ngIf="maSV.errors.required">
+                <small>Mã sinh viên không được để trống</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tên sinh viên -->
+          <div class="form-group">
+            <label for="tenSV">Tên sinh viên</label>
+            <input type="text" id="tenSV" name="tenSV" class="form-control" [(ngModel)]="form.tenSV" #tenSV="ngModel"
+              required />
+            <div *ngIf="tenSV.errors && (tenSV.dirty || tenSV.touched)">
+              <div *ngIf="tenSV.errors.required">
+                <small>Tên sinh viên không được để trống</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tên ngành -->
+          <div class="form-group">
+            <label for="tenNganh">Tên ngành</label>
+            <input type="tenNganh" id="tenNganh" name="tenNganh" class="form-control" [(ngModel)]="form.tenNganh"
+              #tenNganh="ngModel" required />
+            <div *ngIf="tenNganh.errors && (tenNganh.dirty || tenNganh.touched)">
+              <div *ngIf="tenNganh.errors.required">
+                <small>Tên ngành không được để trống</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tên lớp -->
+          <div class="form-group">
+            <label for="tenLop">Tên lớp</label>
+            <input type="text" id="tenLop" name="tenLop" class="form-control" [(ngModel)]="form.tenLop"
+              #tenLop="ngModel" required />
+            <div *ngIf="tenLop.errors && (tenLop.dirty || tenLop.touched)">
+              <div *ngIf="tenLop.errors.required">
+                <small>Tên lớp không được để trống</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Khóa học -->
+          <div class="form-group">
+            <label for="khoaHoc">Khóa học</label>
+            <input type="text" id="khoaHoc" name="khoaHoc" class="form-control" [(ngModel)]="form.khoaHoc"
+              #khoaHoc="ngModel" required />
+            <div *ngIf="khoaHoc.errors && (khoaHoc.dirty || khoaHoc.touched)">
+              <div *ngIf="khoaHoc.errors.required">
+                <small>Khóa học không được để trống</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Button submit -->
+          <button type="submit" class="btn btn-success" [disabled]="sinhvienForm.invalid">
+            Đăng ký
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>

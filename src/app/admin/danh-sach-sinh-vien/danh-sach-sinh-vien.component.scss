@@ -1,0 +1,28 @@
+.main-footer{
+    .searchMaSV{
+        margin: 10px;
+    }
+    .btn{
+        padding: 4px 10px;
+        margin-right: 10px;
+    }
+}
+
+.modal {
+    .modal-content {
+        .modal-header {
+            display: flex;
+            .modal-title {
+                margin-right: 79%;
+                font-weight: bold;
+            }
+        }
+    }
+    .modal-body {
+        .form-group {
+            small {
+                color: red;
+            }
+        }
+    }
+}
