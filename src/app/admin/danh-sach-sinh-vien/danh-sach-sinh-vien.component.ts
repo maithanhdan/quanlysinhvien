@@ -10,21 +10,29 @@ import swal from 'sweetalert2';
 })
 export class DanhSachSinhVienComponent implements OnInit {
   @ViewChild('closebutton') closebutton;
-  constructor(private sinhVien: SinhVienService) { }
+  @ViewChild('closeupdate') closeupdate;
+  constructor(private sinhVienService: SinhVienService) { }
+  sinhVien: Sinhvien = {
+    maSV: "",
+    tenSV: "",
+    tenNganh: "",
+    tenLop: "",
+    khoaHoc: "",
+  };
   danhSachSinhVien: any[];
   search: string;
   startPageNumber = 0;
   endPageNumber = 10;
 
   ngOnInit(): void {
-    this.sinhVien.laySinhVien().subscribe(rs => {
+    this.sinhVienService.layDanhSachSinhVien().subscribe(rs => {
       this.danhSachSinhVien = rs;
       console.log(this.danhSachSinhVien);
     });
   }
 
   delete(id) {
-    this.sinhVien.deleteSV(id).subscribe();
+    this.sinhVienService.deleteSV(id).subscribe();
 
     for (let i = 0; i < this.danhSachSinhVien.length; ++i) {
       if (this.danhSachSinhVien[i].id === id) {
@@ -33,8 +41,12 @@ export class DanhSachSinhVienComponent implements OnInit {
     }
   }
 
-  edit() {
-
+  edit(maSV) {
+    this.sinhVien = {
+      ...this.danhSachSinhVien.find(res => {
+        return res.maSV === maSV;
+      })
+    }
   }
 
   getArrayFromNumber(length) {
@@ -49,12 +61,23 @@ export class DanhSachSinhVienComponent implements OnInit {
   form: Sinhvien = new Sinhvien();
   onSubmit() {
     this.closebutton.nativeElement.click();
-    this.sinhVien.themThongTinSV(this.form).subscribe();
-    this.ngOnInit();
+    this.sinhVienService.themThongTinSV(this.form).subscribe();
     swal.fire({
       position: 'center',
       icon: 'success',
       title: 'Bạn đã thêm thành công',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+
+  updateSV() {
+    this.closeupdate.nativeElement.click();
+    this.sinhVienService.updateSV(this.sinhVien.id,this.sinhVien).subscribe();
+    swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Bạn đã sửa thành công',
       showConfirmButton: false,
       timer: 1500
     })

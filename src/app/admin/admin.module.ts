@@ -10,7 +10,6 @@ import { FooterComponent } from './footer/footer.component';
 import { DiemSinhVienComponent } from './diem-sinh-vien/diem-sinh-vien.component';
 import { HocPhiSinhVienComponent } from './hoc-phi-sinh-vien/hoc-phi-sinh-vien.component';
 import { DanhSachSinhVienComponent } from './danh-sach-sinh-vien/danh-sach-sinh-vien.component';
-import { DataTableComponent } from './data-table/data-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -26,7 +25,6 @@ import { SearchTTSVPipe } from './diem-sinh-vien/search-ttsv.pipe';
     DiemSinhVienComponent,
     HocPhiSinhVienComponent,
     DanhSachSinhVienComponent,
-    DataTableComponent,
     SearchDSSVPipe,
     SearchTTSVPipe
   ],

@@ -10,11 +10,15 @@ import { Sinhvien } from '../model/sinhvien';
 export class SinhVienService {
   constructor(private api: ApiService, private http: HttpClient) { }
 
-  public laySinhVien(): Observable<any> {
+  public layDanhSachSinhVien(): Observable<any> {
     return this.api.get('QuanLySinhVien/LayDanhSachSinhVien');
   }
   public thongTinSV(): Observable<any> {
     return this.api.get('thongTinSV');
+  }
+
+  public updateSV(id: any, values: Sinhvien): Observable<any> {
+    return this.api.put(`QuanLySinhVien/LayDanhSachSinhVien/${id}`, values);
   }
 
   public themThongTinSV(values: Sinhvien): Observable<any> {

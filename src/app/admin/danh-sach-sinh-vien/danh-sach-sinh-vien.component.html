@@ -7,12 +7,12 @@
     <table class="table" style="border: 1px solid #424242;">
       <thead class="" style="background-color:#343A40; color :white">
         <tr>
-          <th scope="col">Mã sinh viên</th>
-          <th scope="col">Tên sinh viên</th>
-          <th scope="col">Tên ngành</th>
-          <th scope="col">Tên lớp</th>
-          <th scope="col">Khóa học</th>
-          <th>action</th>
+          <th scope="col">Mã Sinh Viên</th>
+          <th scope="col">Tên Sinh Viên</th>
+          <th scope="col">Tên Ngành</th>
+          <th scope="col">Tên Lớp</th>
+          <th scope="col">Khóa Học</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -26,7 +26,7 @@
             <button class="btn btn-danger delete" (click)="delete(sv.id)">
               xoa
             </button>
-            <button class="btn btn-primary edit" data-toggle="modal" data-target="#form2" (click)="edit()">
+            <button class="btn btn-primary edit" data-toggle="modal" data-target="#form2" (click)="edit(sv.maSV)">
               sửa
             </button>
           </td>
@@ -133,24 +133,24 @@
 </div>
 
 
-<!-- popup modal2 add user -->
+<!-- popup modal update user -->
 <div class="modal fade bd-example-modal-xl" id="form2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Thêm Sinh Viên</h5>
-        <button #closebutton type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" id="exampleModalLabel">Sửa Sinh Viên</h5>
+        <button #closeupdate type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       <div class="modal-body">
-        <form #sinhvienForm="ngForm" (ngSubmit)="onSubmit()">
+        <form #sinhvienForm2="ngForm">
           <!-- Mã sinh viên -->
           <div class="form-group">
             <label for="maSV">Mã sinh viên</label>
-            <input type="text" id="maSV" name="maSV" class="form-control" [(ngModel)]="form.maSV" #maSV="ngModel"
+            <input type="text" id="maSV" name="maSV" class="form-control" [(ngModel)]="sinhVien.maSV" #maSV="ngModel"
               required />
             <div *ngIf="maSV.errors && (maSV.dirty || maSV.touched)">
               <div *ngIf="maSV.errors.required">
@@ -162,7 +162,7 @@
           <!-- Tên sinh viên -->
           <div class="form-group">
             <label for="tenSV">Tên sinh viên</label>
-            <input type="text" id="tenSV" name="tenSV" class="form-control" [(ngModel)]="form.tenSV" #tenSV="ngModel"
+            <input type="text" id="tenSV" name="tenSV" class="form-control" [(ngModel)]="sinhVien.tenSV" #tenSV="ngModel"
               required />
             <div *ngIf="tenSV.errors && (tenSV.dirty || tenSV.touched)">
               <div *ngIf="tenSV.errors.required">
@@ -174,7 +174,7 @@
           <!-- Tên ngành -->
           <div class="form-group">
             <label for="tenNganh">Tên ngành</label>
-            <input type="tenNganh" id="tenNganh" name="tenNganh" class="form-control" [(ngModel)]="form.tenNganh"
+            <input type="tenNganh" id="tenNganh" name="tenNganh" class="form-control" [(ngModel)]="sinhVien.tenNganh"
               #tenNganh="ngModel" required />
             <div *ngIf="tenNganh.errors && (tenNganh.dirty || tenNganh.touched)">
               <div *ngIf="tenNganh.errors.required">
@@ -186,7 +186,7 @@
           <!-- Tên lớp -->
           <div class="form-group">
             <label for="tenLop">Tên lớp</label>
-            <input type="text" id="tenLop" name="tenLop" class="form-control" [(ngModel)]="form.tenLop"
+            <input type="text" id="tenLop" name="tenLop" class="form-control" [(ngModel)]="sinhVien.tenLop"
               #tenLop="ngModel" required />
             <div *ngIf="tenLop.errors && (tenLop.dirty || tenLop.touched)">
               <div *ngIf="tenLop.errors.required">
@@ -198,7 +198,7 @@
           <!-- Khóa học -->
           <div class="form-group">
             <label for="khoaHoc">Khóa học</label>
-            <input type="text" id="khoaHoc" name="khoaHoc" class="form-control" [(ngModel)]="form.khoaHoc"
+            <input type="text" id="khoaHoc" name="khoaHoc" class="form-control" [(ngModel)]="sinhVien.khoaHoc"
               #khoaHoc="ngModel" required />
             <div *ngIf="khoaHoc.errors && (khoaHoc.dirty || khoaHoc.touched)">
               <div *ngIf="khoaHoc.errors.required">
@@ -207,9 +207,8 @@
             </div>
           </div>
 
-          <!-- Button submit -->
-          <button type="submit" class="btn btn-success" [disabled]="sinhvienForm.invalid">
-            Đăng ký
+          <button class="btn btn-success" [disabled]="sinhvienForm2.invalid" (click)="updateSV()">
+            Sửa
           </button>
         </form>
       </div>

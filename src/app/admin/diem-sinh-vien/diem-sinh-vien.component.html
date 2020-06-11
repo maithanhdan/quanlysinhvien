@@ -1,22 +1,25 @@
 <div class="main-footer">
     <div style="margin:0 auto ; width:70%;position: relative;;">
-      <input type="text" [(ngModel)]="search" />
+      <input class="searchMaSV" type="text" [(ngModel)]="search" placeholder="Tìm kiếm"/>
+      <button class="btn btn-success" type="button" data-toggle="modal" data-target="#form">
+        +
+      </button>
         <table class="table" style="border: 1px solid #424242;">
           <thead class="" style="background-color:#343A40; color :white">
             <tr>
-              <th scope="col">Ma Sinh Vien</th>
-              <th scope="col">Ten Sinh Vien</th>
-              <th scope=col>Que Quan</th>
-              <th scope="col">Dia Chi Thuong Tru</th>
-              <th scope="col">Noi Sinh</th>
-              <th scope="col">Gioi Tinh</th>
-              <th scope="col">So Dien Thoai</th>
+              <th scope="col">Mã Sinh Viên</th>
+              <th scope="col">Tên Sinh Viên</th>
+              <th scope="col">Quê Quán</th>
+              <th scope="col">Địa Chỉ</th>
+              <th scope="col">Nơi Sinh</th>
+              <th scope="col">Giới Tính</th>
+              <th scope="col">Số Điện Thoại</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let sv of ThongTinSinhVien|searchTTSV: search">
+            <tr *ngFor="let sv of thongTinSinhVien | searchTTSV: search | slice: startPageNumber:endPageNumber">
               <td>{{ sv.maSV }}</td>
-              <td>{{ sv.tenSinhVien }}</td>
+              <td>{{ sv.tenSV }}</td>
               <td>{{ sv.queQuan }}</td>
               <td>{{ sv.diaChiThuongTru }}</td>
               <td>{{ sv.noiSinh }}</td>
@@ -25,5 +28,16 @@
             </tr>
           </tbody>
         </table>
+
+        <nav aria-label="Page navigation example" id="1">
+          <ul class="pagination">
+            <li class="page-item" *ngFor="
+                let i of getArrayFromNumber(thongTinSinhVien.length);
+                let pageNumber = index
+              ">
+              <a class="page-link pageNumber" (click)="updatePageNumber(pageNumber)">{{ pageNumber + 1 }}</a>
+            </li>
+          </ul>
+        </nav>
       </div>
 </div>
