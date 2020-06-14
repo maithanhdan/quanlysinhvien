@@ -1,5 +1,205 @@
-<div class="main-footer">
-    <div class="hidden-xs">
-        hoc phi sinh vien!
+<div class="main-footer ">
+    <div style="margin:0 auto ; width:70%;position: relative;">
+        <input class="searchMaSV" type="text" [(ngModel)]="search" placeholder="Tìm kiếm" />
+        <button class="btn btn-success" type="button" data-toggle="modal" data-target="#form">
+      +
+    </button>
+        <table class="table" style="border: 1px solid #424242;">
+            <thead class="" style="background-color:#343A40; color :white">
+                <tr>
+                    <th scope="col">Mã Sinh Viên</th>
+                    <th scope="col">Tên Sinh Viên</th>
+                    <th scope="col">Điểm Trung Bình</th>
+                    <th scope="col">Điểm Rèn Luyện</th>
+                    <th scope="col">Xếp Loại</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sv of danhSachDiemSinhVien | searchDSSV: search | slice: startPageNumber:endPageNumber">
+                    <td>{{ sv.maSV }}</td>
+                    <td>{{ sv.tenSV }}</td>
+                    <td>{{ sv.diemTB }}</td>
+                    <td>{{ sv.diemRenLuyen }}</td>
+                    <td>{{ sv.xepLoai }}</td>
+                    <td>
+                        <button class="btn btn-danger delete" (click)="delete(sv.id)">
+              xoa
+            </button>
+                        <button class="btn btn-primary edit" data-toggle="modal" data-target="#form2" (click)="edit(sv.maSV)">
+              sửa
+            </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <nav aria-label="Page navigation example" id="1">
+            <ul class="pagination">
+                <li class="page-item" *ngFor="
+            let i of getArrayFromNumber(danhSachDiemSinhVien.length);
+            let pageNumber = index
+          ">
+                    <a class="page-link pageNumber" (click)="updatePageNumber(pageNumber)">{{ pageNumber + 1 }}</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<!-- popup modal add user -->
+<div class="modal fade bd-example-modal-xl" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thêm Sinh Viên</h5>
+                <button #closebutton type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+
+            <div class="modal-body">
+                <form #sinhvienForm="ngForm" (ngSubmit)="onSubmit()">
+                    <!-- Mã sinh viên -->
+                    <div class="form-group">
+                        <label for="maSV">Mã sinh viên</label>
+                        <input type="text" id="maSV" name="maSV" class="form-control" [(ngModel)]="form.maSV" #maSV="ngModel" required />
+                        <div *ngIf="maSV.errors && (maSV.dirty || maSV.touched)">
+                            <div *ngIf="maSV.errors.required">
+                                <small>Mã sinh viên không được để trống</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tên sinh viên -->
+                    <div class="form-group">
+                        <label for="tenSV">Tên sinh viên</label>
+                        <input type="text" id="tenSV" name="tenSV" class="form-control" [(ngModel)]="form.tenSV" #tenSV="ngModel" required />
+                        <div *ngIf="tenSV.errors && (tenSV.dirty || tenSV.touched)">
+                            <div *ngIf="tenSV.errors.required">
+                                <small>Tên sinh viên không được để trống</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Điểm Trung Bình -->
+                    <div class="form-group">
+                        <label for="diemTB">Điểm Trung Bình</label>
+                        <input type="diemTB" id="diemTB" name="diemTB" class="form-control" [(ngModel)]="form.diemTB" #diemTB="ngModel" required />
+                        <div *ngIf="diemTB.errors && (diemTB.dirty || diemTB.touched)">
+                            <div *ngIf="diemTB.errors.required">
+                                <small>Điểm Trung Bình không được để trống</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Điểm Rèn Luyện -->
+                    <div class="form-group">
+                        <label for="diemRenLuyen">Điểm Rèn Luyện</label>
+                        <input type="text" id="diemRenLuyen" name="diemRenLuyen" class="form-control" [(ngModel)]="form.diemRenLuyen" #diemRenLuyen="ngModel" required />
+                        <div *ngIf="diemRenLuyen.errors && (diemRenLuyen.dirty || diemRenLuyen.touched)">
+                            <div *ngIf="diemRenLuyen.errors.required">
+                                <small>Điểm Rèn Luyện không được để trống</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Xếp Loại -->
+                    <div class="form-group">
+                        <label for="xepLoai">Xếp Loại</label>
+                        <input type="text" id="xepLoai" name="xepLoai" class="form-control" [(ngModel)]="form.xepLoai" #xepLoai="ngModel" required />
+                        <div *ngIf="xepLoai.errors && (xepLoai.dirty || xepLoai.touched)">
+                            <div *ngIf="xepLoai.errors.required">
+                                <small>Xếp Loại không được để trống</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Button submit -->
+                    <button type="submit" class="btn btn-success" [disabled]="DiemSV.invalid">
+            Đăng ký
+          </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- popup modal update user -->
+<div class="modal fade bd-example-modal-xl" id="form2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sửa Sinh Viên</h5>
+                <button #closeupdate type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+
+            <div class="modal-body">
+                <form #sinhvienForm2="ngForm">
+                    <!-- Mã sinh viên -->
+                    <div class="form-group">
+                        <label for="maSV">Mã sinh viên</label>
+                        <input type="text" id="maSV" name="maSV" class="form-control" [(ngModel)]="DiemSV.maSV" #maSV="ngModel" required />
+                        <div *ngIf="maSV.errors && (maSV.dirty || maSV.touched)">
+                            <div *ngIf="maSV.errors.required">
+                                <small>Mã sinh viên không được để trống</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tên sinh viên -->
+                    <div class="form-group">
+                        <label for="tenSV">Tên sinh viên</label>
+                        <input type="text" id="tenSV" name="tenSV" class="form-control" [(ngModel)]="DiemSV.tenSV" #tenSV="ngModel" required />
+                        <div *ngIf="tenSV.errors && (tenSV.dirty || tenSV.touched)">
+                            <div *ngIf="tenSV.errors.required">
+                                <small>Tên sinh viên không được để trống</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Điểm Trung Bình -->
+                    <div class="form-group">
+                        <label for="diemTB">Điểm Trung Bình</label>
+                        <input type="diemTB" id="diemTB" name="diemTB" class="form-control" [(ngModel)]="DiemSV.diemTB" #diemTB="ngModel" required />
+                        <div *ngIf="diemTB.errors && (diemTB.dirty || diemTB.touched)">
+                            <div *ngIf="diemTB.errors.required">
+                                <small>Điểm Trung Bình không được để trống</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Điểm Rèn Luyện -->
+                    <div class="form-group">
+                        <label for="diemRenLuyen">Điểm Rèn Luyện</label>
+                        <input type="text" id="diemRenLuyen" name="diemRenLuyen" class="form-control" [(ngModel)]="DiemSV.diemRenLuyen" #diemRenLuyen="ngModel" required />
+                        <div *ngIf="diemRenLuyen.errors && (diemRenLuyen.dirty || diemRenLuyen.touched)">
+                            <div *ngIf="diemRenLuyen.errors.required">
+                                <small>Điểm Rèn Luyện không được để trống</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Xếp Loại -->
+                    <div class="form-group">
+                        <label for="xepLoai">Xếp Loại</label>
+                        <input type="text" id="xepLoai" name="xepLoai" class="form-control" [(ngModel)]="DiemSV.xepLoai" #xepLoai="ngModel" required />
+                        <div *ngIf="xepLoai.errors && (xepLoai.dirty || xepLoai.touched)">
+                            <div *ngIf="xepLoai.errors.required">
+                                <small>Xếp Loại không được để trống</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-success" [disabled]="sinhvienForm2.invalid" (click)="updateSV()">
+            Sửa
+          </button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

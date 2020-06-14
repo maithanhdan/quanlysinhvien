@@ -1,0 +1,21 @@
+.khoa {
+    .row {
+        .col-lg-3 {
+            margin: 50px 0;
+            img {
+                width: 270px;
+                height: 270px;
+            }
+            p {
+                margin-top: 20px;
+                font-size: 15px;
+                font-weight: 600;
+                transition: 1s;
+                &:hover {
+                    color: red;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

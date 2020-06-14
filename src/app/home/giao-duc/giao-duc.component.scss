@@ -1,0 +1,232 @@
+.trangTinTuc {
+    .container {
+        .trangTinTucTitle {
+            width: 100%;
+            color: white;
+            background-color: #CD2122;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            padding: 5px 0;
+            margin: 15px 0;
+        }
+        .trangTinTucContent {
+            .rowLon {
+                .left {
+                    .itemImg {
+                        img {
+                            width: 670px;
+                            height: 445px;
+                        }
+                    }
+                    .itemContent {
+                        .itemTitle {
+                            font-size: 20px;
+                            a {
+                                color: black;
+                                transition: 1s;
+                            }
+                             :hover {
+                                color: red;
+                            }
+                        }
+                        .itemText {
+                            .text1 {
+                                p {
+                                    color: red;
+                                    display: inline;
+                                }
+                            }
+                        }
+                    }
+                }
+                .right {
+                    .tinTucRight {
+                        .rowRight {
+                            margin: 0 0 15px 0;
+                            .col-lg-5 {
+                                img {
+                                    width: 188px;
+                                    height: 126px;
+                                }
+                            }
+                            .col-lg-7 {
+                                padding: 10px 0 0 30px;
+                                .text2 {
+                                    font-size: 15px;
+                                    font-weight: 600;
+                                    transition: .5s;
+                                    &:hover {
+                                        color: #CD2122;
+                                        cursor: pointer;
+                                    }
+                                }
+                                .text1 {
+                                    p {
+                                        color: red;
+                                        display: inline;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.hoatDongChung {
+    margin: 50px 0;
+    .container {
+        .rowLon {
+            .left {
+                .hoatDongChungTitle {
+                    font-weight: bold;
+                    font-size: 22px;
+                    &::after {
+                        height: 1px;
+                        width: 25%;
+                        content: '';
+                        background-color: #CD2122;
+                        display: block;
+                        bottom: -10%;
+                    }
+                }
+                .hoatDongChungContent {
+                    .rowNho {
+                        .itemHoatDong {
+                            margin-top: 10px;
+                            img {
+                                width: 275px;
+                                height: 175px;
+                            }
+                            .itemtitle {
+                                font-weight: bold;
+                                font-size: 18px;
+                                transition: 1s;
+                                margin: 10px 0;
+                                &:hover {
+                                    color: red;
+                                    cursor: pointer;
+                                }
+                            }
+                            .itemText {
+                                font-size: 15px;
+                                word-spacing: 2px;
+                            }
+                        }
+                    }
+                }
+            }
+            .right {
+                .thongBaoTitle {
+                    font-weight: bold;
+                    font-size: 22px;
+                    &::after {
+                        height: 1px;
+                        width: 50%;
+                        content: '';
+                        background-color: #CD2122;
+                        display: block;
+                        bottom: -10%;
+                    }
+                }
+                .thongBaoConTent {
+                    .thongBaoItem {
+                        margin-bottom: 20px;
+                        p {
+                            font-weight: bold;
+                            font-size: 18px;
+                            transition: 1s;
+                            margin: 10px 0;
+                            &:hover {
+                                color: red;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.tinTuc {
+    .container {
+        .rowLon {
+            .Shared {
+                .SharedTitle {
+                    font-weight: bold;
+                    font-size: 22px;
+                    &::after {
+                        height: 1px;
+                        width: 25%;
+                        content: '';
+                        background-color: #CD2122;
+                        display: block;
+                        bottom: -10%;
+                    }
+                }
+                .SharedContent {
+                    .rowNho {
+                        .itemShared {
+                            margin-top: 10px;
+                            img {
+                                width: 275px;
+                                height: 175px;
+                            }
+                            .itemTile {
+                                font-weight: bold;
+                                font-size: 18px;
+                                transition: 1s;
+                                margin: 10px 0;
+                                &:hover {
+                                    color: red;
+                                    cursor: pointer;
+                                }
+                            }
+                            .itemContent {
+                                font-size: 15px;
+                                word-spacing: 2px;
+                            }
+                        }
+                    }
+                }
+            }
+            .KHCN {}
+        }
+    }
+}
+
+.banner {
+    .container {
+        position: relative;
+        img {
+            position: relative;
+        }
+        h2 {
+            position: absolute;
+            top: 30%;
+            left: 45%;
+            color: white;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        a {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            padding: 10px;
+            border-radius: 20px;
+            color: white;
+            background-color: #CD2122;
+            transition: 1s;
+            &:hover {
+                border: 2px solid #CD2122;
+                color: #CD2122;
+                background-color: #fff;
+            }
+        }
+    }
+}

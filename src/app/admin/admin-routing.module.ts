@@ -16,11 +16,11 @@ const routes: Routes = [
         component: DanhSachSinhVienComponent,
       },
       {
-        path: 'diemsinhvien',
+        path: 'thongTinSienVien',
         component: DiemSinhVienComponent,
       },
       {
-        path: 'hocphisinhvien',
+        path: 'diemSinhVien',
         component: HocPhiSinhVienComponent,
       }
     ],

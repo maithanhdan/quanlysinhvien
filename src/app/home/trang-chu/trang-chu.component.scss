@@ -1,0 +1,350 @@
+.banner {
+    position: relative;
+    .banner-img {
+        position: relative;
+        img {
+            width: 100%;
+        }
+        .linkXemChiTiet {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            font-size: 15px;
+            font-weight: 600;
+            a {
+                color: white;
+                padding: 5px;
+                background-color: orangered;
+                border-radius: 5px;
+                &:hover {
+                    color: orangered;
+                    background: white;
+                }
+            }
+        }
+    }
+}
+
+.tinTuc {
+    .container {
+        .title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #4A93C4;
+            margin: 50px 0 30px 0;
+        }
+        .content {
+            .row {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                margin-right: -15px;
+                margin-left: -15px;
+                .col-lg-4 {
+                    margin: 0 10px;
+                    overflow: hidden;
+                    img {
+                        width: 100%;
+                    }
+                    .tinTucConTent {
+                        .tinTucTitle {
+                            font-size: 20px;
+                            a {
+                                color: black;
+                                transition: 1s;
+                            }
+                             :hover {
+                                color: red;
+                            }
+                        }
+                        .tinTucText {
+                            .text1 {
+                                p {
+                                    color: red;
+                                    display: inline;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .ticTucKhac {
+            text-align: right;
+            font-size: 20px;
+            margin: 50px 0;
+            font-weight: bold;
+            a {
+                color: #CD2122;
+                transition: 1s;
+            }
+             :hover {
+                padding: 7px;
+                color: white;
+                background-color: #CD2122;
+            }
+        }
+    }
+}
+
+.suKien {
+    background: #F9FADC;
+    .container {
+        .title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #4A93C4;
+            margin: 50px 0 30px 0;
+        }
+        .content {
+            .row {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                margin-right: -15px;
+                margin-left: -15px;
+                .col-lg-4 {
+                    margin: 0 10px;
+                    overflow: hidden;
+                    img {
+                        width: 100%;
+                        height: 176px;
+                    }
+                    .suKienConTent {
+                        .suKienTitle {
+                            font-size: 20px;
+                            a {
+                                color: black;
+                                transition: 1s;
+                            }
+                             :hover {
+                                color: red;
+                            }
+                        }
+                        .suKienText {
+                            .text1 {
+                                p {
+                                    color: red;
+                                    display: inline;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .suKienkhac {
+            text-align: right;
+            font-size: 20px;
+            margin: 50px 0;
+            font-weight: bold;
+            a {
+                color: #CD2122;
+                transition: 1s;
+            }
+             :hover {
+                padding: 7px;
+                color: white;
+                background-color: #CD2122;
+            }
+        }
+    }
+}
+
+.gioiThieu {
+    .container {
+        .title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #4A93C4;
+            margin: 50px 0 30px 0;
+            text-transform: uppercase;
+        }
+        .content {
+            img {
+                border: 1px solid #CD2122;
+            }
+            .row1 {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                margin-right: -15px;
+                margin-left: -15px;
+                margin: 50px 0;
+                .col-lg-4 {
+                    margin: 0 10px;
+                    overflow: hidden;
+                    img {
+                        width: 100%;
+                        max-width: 300px;
+                        height: 200px;
+                    }
+                    .gioiThieuConTent {
+                        padding: 10px 0;
+                        position: relative;
+                        .gioiThieuTitle {
+                            margin-top: 10px;
+                            font-size: 15px;
+                            text-align: center;
+                            margin: 0 10px 0 0;
+                            a {
+                                color: black;
+                                transition: 1s;
+                            }
+                             :hover {
+                                color: red;
+                            }
+                        }
+                        .gioiThieuText {
+                            .text1 {
+                                p {
+                                    color: red;
+                                    display: inline;
+                                }
+                            }
+                        }
+                    }
+                    &::after {
+                        display: block;
+                        z-index: 100;
+                        bottom: 0%;
+                        left: 50%;
+                        content: '';
+                        width: 50px;
+                        height: 1px;
+                        background: #222;
+                        position: absolute;
+                        margin-left: -25px;
+                        z-index: 1;
+                    }
+                }
+            }
+            .row2 {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                margin-right: -15 px;
+                margin-left: -15px;
+                .col-lg-3 {
+                    margin: 0 10px;
+                    overflow: hidden;
+                    position: relative;
+                    img {
+                        width: 100%;
+                        max-width: 300px;
+                        height: 176px;
+                    }
+                    .gioiThieuConTent {
+                        position: relative;
+                        padding: 10px 0;
+                        .gioiThieuTitle {
+                            font-size: 15px;
+                            margin-top: 10px;
+                            text-align: center;
+                            a {
+                                color: black;
+                                transition: 1s;
+                            }
+                             :hover {
+                                color: red;
+                            }
+                        }
+                        .gioiThieuText {
+                            .text1 {
+                                p {
+                                    color: red;
+                                    display: inline;
+                                }
+                            }
+                        }
+                    }
+                    &::after {
+                        display: block;
+                        z-index: 100;
+                        bottom: 0%;
+                        left: 50%;
+                        content: '';
+                        width: 50px;
+                        height: 1px;
+                        background: #222;
+                        position: absolute;
+                        margin-left: -25px;
+                    }
+                }
+            }
+        }
+        .totNghiep {
+            margin: 100px 0;
+            .row {
+                .imgSV {
+                    margin-left: 30%;
+                }
+                .totNghiepText {
+                    .contentTotNghiep {
+                        .item {
+                            margin: 30px 0;
+                            .row {
+                                .itemText {
+                                    .item-title {
+                                        font-weight: bold;
+                                    }
+                                    .item-text {
+                                        display: inline;
+                                        font-size: 15px;
+                                        p {
+                                            color: #4A93C4;
+                                            display: inline;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.khoa {
+    .title {
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        color: #4A93C4;
+        margin: 50px 0 30px 0;
+    }
+    .container {
+        .content {
+            .row {
+                width: 120%;
+                display: flex;
+                justify-content: space-between;
+                margin-right: -15px;
+                margin-left: -15px;
+                .item {
+                    margin: 0 10px;
+                    overflow: hidden;
+                    img {
+                        width: 100%;
+                    }
+                    .itemText {
+                        margin-top: 20px;
+                        text-align: right;
+                        a {
+                            color: black;
+                            font-size: 15px;
+                            transition: 1s;
+                        }
+                         :hover {
+                            color: red;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

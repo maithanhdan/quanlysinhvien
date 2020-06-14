@@ -6,18 +6,18 @@ import swal from 'sweetalert2';
 @Component({
   selector: 'app-danh-sach-sinh-vien',
   templateUrl: './danh-sach-sinh-vien.component.html',
-  styleUrls: ['./danh-sach-sinh-vien.component.scss']
+  styleUrls: ['./danh-sach-sinh-vien.component.scss'],
 })
 export class DanhSachSinhVienComponent implements OnInit {
   @ViewChild('closebutton') closebutton;
   @ViewChild('closeupdate') closeupdate;
-  constructor(private sinhVienService: SinhVienService) { }
+  constructor(private sinhVienService: SinhVienService) {}
   sinhVien: Sinhvien = {
-    maSV: "",
-    tenSV: "",
-    tenNganh: "",
-    tenLop: "",
-    khoaHoc: "",
+    maSV: '',
+    tenSV: '',
+    tenNganh: '',
+    tenLop: '',
+    khoaHoc: '',
   };
   danhSachSinhVien: any[];
   search: string;
@@ -25,7 +25,7 @@ export class DanhSachSinhVienComponent implements OnInit {
   endPageNumber = 10;
 
   ngOnInit(): void {
-    this.sinhVienService.layDanhSachSinhVien().subscribe(rs => {
+    this.sinhVienService.layDanhSachSinhVien().subscribe((rs) => {
       this.danhSachSinhVien = rs;
       console.log(this.danhSachSinhVien);
     });
@@ -33,7 +33,6 @@ export class DanhSachSinhVienComponent implements OnInit {
 
   delete(id) {
     this.sinhVienService.deleteSV(id).subscribe();
-
     for (let i = 0; i < this.danhSachSinhVien.length; ++i) {
       if (this.danhSachSinhVien[i].id === id) {
         this.danhSachSinhVien.splice(i, 1);
@@ -41,13 +40,7 @@ export class DanhSachSinhVienComponent implements OnInit {
     }
   }
 
-  edit(maSV) {
-    this.sinhVien = {
-      ...this.danhSachSinhVien.find(res => {
-        return res.maSV === maSV;
-      })
-    }
-  }
+
 
   getArrayFromNumber(length) {
     return new Array(Math.ceil(length / 10));
@@ -67,19 +60,25 @@ export class DanhSachSinhVienComponent implements OnInit {
       icon: 'success',
       title: 'Bạn đã thêm thành công',
       showConfirmButton: false,
-      timer: 1500
-    })
+      timer: 1500,
+    });
   }
-
+  edit(maSV) {
+    this.sinhVien = {
+      ...this.danhSachSinhVien.find((res) => {
+        return res.maSV === maSV;
+      }),
+    };
+  }
   updateSV() {
     this.closeupdate.nativeElement.click();
-    this.sinhVienService.updateSV(this.sinhVien.id,this.sinhVien).subscribe();
+    this.sinhVienService.updateSV(this.sinhVien.id, this.sinhVien).subscribe();
     swal.fire({
       position: 'center',
       icon: 'success',
       title: 'Bạn đã sửa thành công',
       showConfirmButton: false,
-      timer: 1500
-    })
+      timer: 1500,
+    });
   }
 }

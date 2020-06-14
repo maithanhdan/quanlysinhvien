@@ -16,6 +16,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { SearchDSSVPipe } from './danh-sach-sinh-vien/search-dssv.pipe';
 import { SearchTTSVPipe } from './diem-sinh-vien/search-ttsv.pipe';
 
+
+
 @NgModule({
   declarations: [
     AdminComponent,
@@ -26,7 +28,7 @@ import { SearchTTSVPipe } from './diem-sinh-vien/search-ttsv.pipe';
     HocPhiSinhVienComponent,
     DanhSachSinhVienComponent,
     SearchDSSVPipe,
-    SearchTTSVPipe
+    SearchTTSVPipe,
   ],
   imports: [
     CommonModule,
